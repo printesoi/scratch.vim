@@ -163,3 +163,19 @@ function! scratch#preview()
     call s:activate_autocmds(bufnr('__Scratch__'))
   endif
 endfunction
+
+function! scratch#close()
+  let scr_winnr = bufwinnr('__Scratch__')
+  if scr_winnr != -1
+    execute scr_winnr . 'close'
+  endif
+endfunction
+
+function! scratch#toggle()
+  let scr_winnr = bufwinnr('__Scratch__')
+  if scr_winnr != -1
+    execute scr_winnr . 'close'
+  else
+    call scratch#insert(0)
+  endif
+endfunction
